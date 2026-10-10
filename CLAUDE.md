@@ -64,10 +64,16 @@ This project is for learning and testing RAG (Retrieval-Augmented Generation) pi
 - `k_rrf` parameter (default 60) controls how much we penalize lower-ranked items
 
 ### File Structure
-- `embeddings.py` - Complete RAG pipeline (chunking → embedding → storage → retrieval → answering)
-- `mcp_server.py` - MCP server with document management tools (read/edit/list documents)
-- `.vector_db/` - Persistent vector database (auto-created by Chromadb)
-- `.env` - API keys (never commit)
+- `claude_with_amazon_bedrock/` - Course scripts and cheat sheet
+  - `embeddings.py` - Complete RAG pipeline (chunking → embedding → storage → retrieval → answering)
+  - `mcp_server.py` - MCP server with document management tools (read/edit/list documents)
+  - `test_mcp_client.py` - Simple test harness for the MCP server tools (not a protocol-level client)
+  - `training.py` - Tool-use example (structured extraction with a forced tool call)
+  - `.vector_db/` - Persistent vector database (auto-created by Chromadb, gitignored)
+  - `cheatsheet_claude_with_bedrock.md`
+- `claude_code_in_action/` - Course cheat sheet
+- `requirements.txt` - Python dependencies (install into `venv/`)
+- `.env` - API keys at the repo root (never commit)
 
 ### MCP Server Tools
 
@@ -95,8 +101,11 @@ max_tokens = 512
 
 ## Useful Commands
 ```bash
+# Set up (from repo root)
+python3 -m venv venv && venv/bin/pip install -r requirements.txt
+
 # Run the RAG pipeline
-python embeddings.py
+cd claude_with_amazon_bedrock && ../venv/bin/python embeddings.py
 
 # Check API usage (requires logging into provider dashboards)
 # Anthropic: console.anthropic.com
