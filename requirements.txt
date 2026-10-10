@@ -1,0 +1,7 @@
+anthropic
+openai
+chromadb
+rank-bm25
+mcp
+pydantic
+python-dotenv
